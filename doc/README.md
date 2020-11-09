@@ -14,6 +14,16 @@ pingpong服务运行流程：
 
 1. 循环
    1. 和client连接
+	1. `./setup_mtcp_dpdk_env.sh`
+	2. `41`：`[41] x86_64-native-linuxapp-gcc`
+	3. `45`：`[45] Insert IGB UIO module`
+	4. `49`：`[49] Setup hugepage mappings for NUMA systems`
+	5. `51`：`[51] Bind Ethernet/Baseband/Crypto device to IGB UIO module`
+	6. `62`：`[62] Exit Script`
+	7. `sudo ifconfig dpdk0 x.x.x.x netmask 255.255.255.0 up`
+	8. `./configure --with-dpdk-lib=$RTE_SDK/$RTE_TARGET CFLAGS="-DMAX_CPUS=48"`
+		   注意CPU数量务必不要设置错
+	9. `make`
    2. 接受client发过来一个integer(n)
    3. 循环n次
       1. 发送上一次接受到的字符串（第一次为发送n的字符串）
