@@ -43,12 +43,11 @@ int main()
 	int result = mtcp_init("config.conf");
 	if(result == 0){
 		mctx_t ctx = mtcp_create_context(0);
-
 		int listener = generateSock(ctx);
 		if(listener != -1){
 			int listen_result = startListen(ctx, listener);
 			if(listen_result != -1){
-				mtcp_listen(ctx, listener, 1000000);
+				mtcp_listen(ctx, listener, 1024);
 				while(1){
 					struct sockaddr_in client;
 					socklen_t client_size = sizeof(client);
