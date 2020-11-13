@@ -29,7 +29,7 @@ sprintf(buf, "%d", T);
 	numbytes = send(sockfd, str, strlen(str), 0);
         buf[numbytes]='\0';  
     }
-	send(sockfd, str, strlen(str), 0);
+	//send(sockfd, str, strlen(str), 0);
     close(sockfd);
    // return 0;
 }
