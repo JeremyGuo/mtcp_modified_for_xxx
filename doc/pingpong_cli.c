@@ -21,10 +21,12 @@ void Test(char *addr, int port, int T)
     
     while(connect(sockfd,(struct sockaddr*)&their_addr,sizeof(struct sockaddr)) == -1);
     char str[] = "HelloWorld\n";
+sprintf(buf, "%d", T);
+	numbytes = send(sockfd, buf, strlen(buf), 0);
     while(T--)
     {
-        numbytes = send(sockfd, str, strlen(str), 0);
-        numbytes = recv(sockfd, buf, BUFSIZ, 0);  
+        numbytes = recv(sockfd, buf, BUFSIZ, 0);
+	numbytes = send(sockfd, str, strlen(str), 0);
         buf[numbytes]='\0';  
     }
 	send(sockfd, str, strlen(str), 0);
